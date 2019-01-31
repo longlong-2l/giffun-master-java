@@ -11,9 +11,10 @@
         android:theme="@style/GifFun">
 
         <activity
-            android:name=".Op"
+            android:name=".OpenSourceSplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/GifFun.SplashActivity">
+            android:theme="@style/GifFun.SplashActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,9 +5,10 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toolbar;
 
 import com.study.longl.main.R;
 import com.study.longl.main.common.callback.PermissionListener;
@@ -15,7 +16,7 @@ import com.study.longl.main.common.callback.RequestLifecycle;
 import com.study.longl.main.util.ActivityCollector;
 import com.umeng.analytics.MobclickAgent;
 
-import org.greenrobot.eventbus.EventBus;
+//import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
@@ -59,7 +60,7 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
 
     private WeakReference<Activity> weakReference = null;
 
-    Toolbar toolbar = null;
+    protected Toolbar toolbar = null;
 
     private ProgressDialog progressDialog = null;
 
@@ -71,7 +72,7 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
         activity = this;
         weakReference = new WeakReference<Activity>(this);
         ActivityCollector.add(weakReference);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
         super.onDestroy();
         activity = null;
         ActivityCollector.remove(weakReference);
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -103,11 +104,14 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
     }
 
     public void setupViews() {
-        loading = findViewById(R.id.loading);
+        Log.d("extends", "father_setupViews: ");
+//        loading = findViewById(R.id.loading);
     }
 
-    public void setupToolaBar(){
+    public void setupToolBar() {
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

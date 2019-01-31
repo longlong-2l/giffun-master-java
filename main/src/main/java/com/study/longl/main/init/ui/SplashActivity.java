@@ -1,13 +1,14 @@
 package com.study.longl.main.init.ui;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.study.longl.core.GifFun;
 import com.study.longl.core.util.GlobalUtil;
 import com.study.longl.main.common.ui.BaseActivity;
+import com.study.longl.main.feeds.ui.MainActivity;
 
 /**
  * 闪屏Activity界面，在这里进行程序初始化操作。
@@ -28,7 +29,7 @@ public abstract class SplashActivity extends BaseActivity {
 
     private boolean hasNewVersion = false;
 
-    private View logoView = null;
+    public View logoView = null;
 
     private long MAX_WAIT_TIME = 5000;
 
@@ -49,7 +50,9 @@ public abstract class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 GlobalUtil.sleep(MAX_WAIT_TIME);
-//                forwardToNextActivity(false, null);
+//                forwardToNextActivity();
+                MainActivity.actionStart(SplashActivity.this);
+                finish();
             }
         }).start();
     }
@@ -61,16 +64,17 @@ public abstract class SplashActivity extends BaseActivity {
         if (!isForwarding) {
             isForwarding = true;
             long currentTime = System.currentTimeMillis();
-            long timeSpent = currentTime- enterTime;
-            if(timeSpent< MIN_WAIT_TIME){
+            long timeSpent = currentTime - enterTime;
+            if (timeSpent < MIN_WAIT_TIME) {
                 GlobalUtil.sleep(MIN_WAIT_TIME - timeSpent);
             }
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if(GifFun.isLogin()){
-//                        Main
-                    }
+//                    if(GifFun.isLogin()){
+                    MainActivity.actionStart(SplashActivity.this);
+                    finish();
+//                    }
                 }
             });
         }

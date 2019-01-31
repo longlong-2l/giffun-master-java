@@ -45,18 +45,16 @@
         <item name="colorControlHighlight">@color/white_text</item>
     </style>
 
-    <style name="GifFun.LoginActivity" parent="GifFun.RegisterActivity">
-    </style>
+    <style name="GifFun.LoginActivity" parent="GifFun.RegisterActivity"></style>
 
-    <style name="GifFun.MainActivity">
-    </style>
+    <style name="GifFun.MainActivity"></style>
 
-    <style name="GifFun.FeedDetailActivity">
-    </style>
-    <style name="GifFun.CommentsActivity">
-    </style>
-    <style name="GifFun.UserHomePageActivity">
-    </style>
+    <style name="GifFun.FeedDetailActivity"></style>
+
+    <style name="GifFun.CommentsActivity"></style>
+
+    <style name="GifFun.UserHomePageActivity"></style>
+
     <style name="GifFun.SettingsActivity">
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
@@ -71,8 +69,7 @@
         <item name="android:windowAnimationStyle">@style/SearchWindowAnimations</item>
     </style>
 
-    <style name="CropImageActivity" parent="Base.Theme.AppCompat">
-    </style>
+    <style name="CropImageActivity" parent="Base.Theme.AppCompat"></style>
 
     <style name="EditTextErrorAppearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white_text</item>
@@ -108,4 +105,15 @@
     <style name="TransparentBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
