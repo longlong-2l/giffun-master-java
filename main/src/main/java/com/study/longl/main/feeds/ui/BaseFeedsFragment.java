@@ -53,6 +53,11 @@ public abstract class BaseFeedsFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mainActivity = (MainActivity) getActivity();
+        setupRecyclerView();
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+//        recyclerView.addOnScrollListener();
+//        swipeRefreshLayout.setOnRefreshListener();
+        loadFeedsFromDB();
     }
 
     /**
@@ -76,6 +81,9 @@ public abstract class BaseFeedsFragment extends BaseFragment {
         swipeRefreshLayout.setRefreshing(false);
     }
 
+    /**
+     * 将RecyclerView滚动到顶部
+     */
     protected void scrollTop() {
         if (adapter.getItemCount() != 0) {
             recyclerView.smoothScrollToPosition(0);
