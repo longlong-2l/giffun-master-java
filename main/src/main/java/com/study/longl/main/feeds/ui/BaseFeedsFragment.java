@@ -94,7 +94,7 @@ public abstract class BaseFeedsFragment extends BaseFragment {
 
     protected abstract void refreshFeeds();
 
-    protected abstract void loadFeeds();
+    protected abstract void loadFeeds(long lastFeed);
 
     protected abstract void loadFeedsFromDB();
 

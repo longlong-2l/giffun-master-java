@@ -33,9 +33,10 @@ public class FollowingFeedsFragment extends BaseFeedsFragment implements LoadDat
     }
 
     @Override
-    protected void loadFeeds() {
+    protected void loadFeeds(long lastFeed) {
 
     }
+
 
     @Override
     protected void loadFeedsFromDB() {

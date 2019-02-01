@@ -24,8 +24,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.study.longl.core.GifFun;
 import com.study.longl.main.R;
 import com.study.longl.main.common.ui.BaseActivity;
+import com.study.longl.main.settings.ui.SettingsActivity;
 
 import java.util.ArrayList;
 
@@ -93,7 +95,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
        }else if(id == R.id.draft){  //草稿箱
 
        }else if(id == R.id.settings){  //设置
-
+           GifFun.getHandler().postDelayed(new Runnable() {
+               @Override
+               public void run() {
+                   SettingsActivity.actionStart(MainActivity.this);
+               }
+           },300);
        }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

@@ -13,6 +13,12 @@
             android:name=".feeds.ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/GifFun.MainActivity" />
+
+        <activity
+            android:name=".settings.ui.SettingsActivity"
+            android:label="@string/settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/GifFun.SettingsActivity" />
     </application>
 
 </manifest>
