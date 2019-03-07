@@ -8,7 +8,9 @@ import java.util.List;
  */
 
 public interface PermissionListener {
+    //同意
     void onGranted();
 
+    //拒绝的权限
     void onDenied(List<String> deniedPermissions);
 }

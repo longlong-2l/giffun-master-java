@@ -39,8 +39,8 @@ public abstract class BaseFeedsFragment extends BaseFragment {
 
     /**
      * 判断是否还有更多数据。
-     *
-     * @return isNoMoreData 当服务器端没有更多Feeds时，此值为true，否则此值为false。
+     * <p>
+     * isNoMoreData 当服务器端没有更多Feeds时，此值为true，否则此值为false。
      */
     public boolean isNoMoreData = false;
 
@@ -79,15 +79,38 @@ public abstract class BaseFeedsFragment extends BaseFragment {
         super.loadFailed(msg);
         isLoadFailed = true;
         swipeRefreshLayout.setRefreshing(false);
+        if (dataSeetSize() == 0) {
+            if (msg == null) {
+                swipeRefreshLayout.setVisibility(View.GONE);
+                showBadNetworkView(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+            } else {
+                showLoadErrorView(msg);
+            }
+        } else {
+            adapter.notifyItemChanged(adapter.getItemCount() - 1);
+        }
+    }
+
+    private void reloadFeeds() {
+//        if (adapter.getItemCount() <= 1) {
+//            startLoading();
+//        } else {
+//            swipeRefreshLayout.setRefreshing(true);
+//        }
     }
 
     /**
      * 将RecyclerView滚动到顶部
      */
     protected void scrollTop() {
-        if (adapter.getItemCount() != 0) {
-            recyclerView.smoothScrollToPosition(0);
-        }
+//        if (adapter.getItemCount() != 0) {
+//            recyclerView.smoothScrollToPosition(0);
+//        }
     }
 
     protected abstract void setupRecyclerView();

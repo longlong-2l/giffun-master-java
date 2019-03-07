@@ -15,6 +15,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.study.longl.main.common.ui.BaseActivity;
 import com.study.longl.main.settings.ui.SettingsActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -86,22 +88,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-       if(id == R.id.compose){  //发布趣图
+        if (id == R.id.compose) {  //发布趣图
 
-       }else if(id == R.id.user_home){  //个人主页
+        } else if (id == R.id.user_home) {  //个人主页
 
-       }else if(id == R.id.recommend_following){  //推荐关注
+        } else if (id == R.id.recommend_following) {  //推荐关注
 
-       }else if(id == R.id.draft){  //草稿箱
+        } else if (id == R.id.draft) {  //草稿箱
 
-       }else if(id == R.id.settings){  //设置
-           GifFun.getHandler().postDelayed(new Runnable() {
-               @Override
-               public void run() {
-                   SettingsActivity.actionStart(MainActivity.this);
-               }
-           },300);
-       }
+        } else if (id == R.id.settings) {  //设置
+            GifFun.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    SettingsActivity.actionStart(MainActivity.this);
+                }
+            }, 300);
+        }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -115,10 +117,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-//        ViewPager viewPager = findViewById(R.id.viewpager);
-//        setupViewPager(viewPager);
+
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 //        TabLayout tabLayout = findViewById(R.id.tabs);
 //        tabLayout.setupWithViewPager(viewPager);
+
         final NavigationView navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
         FloatingActionButton floatingActionButton = findViewById(R.id.composeFab);
@@ -139,8 +143,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        pagerAdapter = new Adapter(getSupportFragmentManager());
-//        pagerAdapter.addFragment();
+        try {
+            pagerAdapter = new Adapter(getSupportFragmentManager());
+            pagerAdapter.addFragment(new WorldFeedsFragment(), "世界");
+            pagerAdapter.addFragment(new FollowingFeedsFragment(), "关注");
+            pagerAdapter.addFragment(new HotFeedsFragment(), "热门");
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.setOffscreenPageLimit(2);
+            viewPager.setCurrentItem(0);
+        } catch (Exception e) {
+            Log.i("exception", "setupViewPager: " + e.getMessage());
+        }
     }
 
     class Adapter extends FragmentPagerAdapter {

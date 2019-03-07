@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/wall">
@@ -14,12 +13,17 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <include layout="@layout/loading" />
 
     <include layout="@layout/view_stub_holder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="瀑布流" />
 
 </FrameLayout>

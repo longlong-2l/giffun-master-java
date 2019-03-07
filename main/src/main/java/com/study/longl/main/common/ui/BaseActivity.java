@@ -2,8 +2,11 @@ package com.study.longl.main.common.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,6 +22,7 @@ import com.umeng.analytics.MobclickAgent;
 //import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 
 /**
  * 应用程序中所有Activity的基类。
@@ -111,21 +115,57 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
     public void setupToolBar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    //设置状态栏透明，只设置Android5.0以上的接口
+    protected void transparentStatusBar() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     @Override
     public void startLoading() {
-
+//        loading.setVisibility(View.VISIBLE);
+        hideBadNetWorkView();
+        hideLoadErrorView();
+        hideNoContentView();
     }
 
     @Override
     public void loadFinished() {
-
+//        loading.setVisibility(View.GONE);
     }
 
     @Override
     public void loadFailed(String msg) {
+//        loading.setVisibility(View.GONE);
+    }
 
+    //将加载失败的控件隐藏
+    protected void hideLoadErrorView() {
+
+    }
+
+    //隐藏无数据内容
+    protected void hideNoContentView() {
+
+    }
+
+    //将网络有问题的隐藏
+    protected void hideBadNetWorkView() {
+
+    }
+
+    protected void showProgreeDialog(String title, String message) {
+
+    }
+
+    protected void clossProgressDialog() {
+//        if (progressDialog.isShowing()) {
+//            progressDialog.dismiss();
+//        }
     }
 }

@@ -9,6 +9,13 @@ import android.support.v4.app.Fragment;
 import com.study.longl.main.R;
 import com.study.longl.main.common.ui.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.List;
+
 /**
  * App设置界面的主Activity。
  *
@@ -31,14 +38,14 @@ public class SettingsActivity extends BaseActivity {
     }
 
     private void gotoSettings(int settingsType) {
-
         Fragment settingFragment = null;
         switch (settingsType) {
             case 0:
                 settingFragment = new MainSettingsFragment();
                 break;
-//            case 1:
-//                break;
+            case 1:
+//                settingFragment = new GifSettingFragment();
+                break;
         }
 
         if (settingFragment != null) {
@@ -50,6 +57,20 @@ public class SettingsActivity extends BaseActivity {
     public static void actionStart(Activity activity) {
         Intent intent = new Intent(activity, SettingsActivity.class);
         activity.startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int fragments = getSupportFragmentManager().getBackStackEntryCount(); //获取堆栈中的fragment数目
+        if (fragments == 1) {
+            finish();
+        } else {
+            if (fragments > 1) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                finish();
+            }
+        }
     }
 
     public void actionStartGIFSettings(Activity activity) {

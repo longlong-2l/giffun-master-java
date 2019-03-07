@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.util.Log;
 
 import com.study.longl.main.R;
 
@@ -24,6 +25,15 @@ public class MainSettingsFragment extends PreferenceFragmentCompat implements Sh
         }
         settingsActivity = (SettingsActivity) getActivity();
         settingsActivity.setTitle("设置");
+
+        Preference preference = findPreference(getString(R.string.key_about));
+        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Log.i("setting", "onPreferenceClick: ");
+                return false;
+            }
+        });
     }
 
     @Override
@@ -39,10 +49,12 @@ public class MainSettingsFragment extends PreferenceFragmentCompat implements Sh
     @Override
     public void onResume() {
         super.onResume();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 }

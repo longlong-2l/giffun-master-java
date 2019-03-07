@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ import static com.study.longl.core.extension.Density.dp2px;
  */
 public abstract class WaterFallFeedsFragment extends BaseFeedsFragment implements LoadDataListener {
 
-    public int imageWidth = get();
+//    public int imageWidth = get();
 
     private int get() {
         WindowManager windowManager = (WindowManager) mainActivity.getSystemService(Context.WINDOW_SERVICE);
@@ -54,8 +55,8 @@ public abstract class WaterFallFeedsFragment extends BaseFeedsFragment implement
     protected void setupRecyclerView() {
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         ((StaggeredGridLayoutManager) layoutManager).setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+//            recyclerView.setLayoutManager(layoutManager);
+//            recyclerView.setHasFixedSize(true);
+//            ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
     }
 }
