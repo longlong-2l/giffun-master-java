@@ -1,5 +1,7 @@
 package com.study.longl.core.model;
 
+import android.os.Parcel;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -8,9 +10,13 @@ import com.google.gson.annotations.SerializedName;
  * @author lilong
  * @since 2019/1/31
  */
-public abstract class SimpleListFeed {
+public abstract class SimpleListFeed extends BaseFeed{
     @SerializedName("feed_type")
-    int feedType = 0;
+    public int feedType = 0;
 
-    abstract BaseFeed refFeed();
+    protected SimpleListFeed(Parcel in) {
+        super(in);
+    }
+
+    public abstract BaseFeed refFeed();
 }

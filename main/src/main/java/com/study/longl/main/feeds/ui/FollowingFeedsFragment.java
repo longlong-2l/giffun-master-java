@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import com.study.longl.core.model.FollowingFeed;
 import com.study.longl.main.R;
 import com.study.longl.main.common.callback.LoadDataListener;
+import com.study.longl.main.feeds.adapter.FollowingFeedAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -70,7 +72,11 @@ public class FollowingFeedsFragment extends BaseFeedsFragment implements LoadDat
     @Override
     protected void setupRecyclerView() {
         layoutManager = new LinearLayoutManager(mainActivity);
-
+        adapter = new FollowingFeedAdapter(this, feedList, maxImageWidth, layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
     }
 
     @Override

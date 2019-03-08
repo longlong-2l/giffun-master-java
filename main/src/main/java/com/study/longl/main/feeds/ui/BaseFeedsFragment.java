@@ -36,6 +36,7 @@ public abstract class BaseFeedsFragment extends BaseFragment {
     public boolean isLoadFailed = false;
 
     public LoadDataListener loadDataListener;
+    private Object aa;
 
     /**
      * 判断是否还有更多数据。
