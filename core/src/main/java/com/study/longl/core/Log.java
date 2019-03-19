@@ -35,6 +35,12 @@ public class Log {
         }
     }
 
+    public static void logInfo(String tag, String msg) {
+        if (level < INFO) {
+            android.util.Log.i(tag, msg);
+        }
+    }
+
     public static void logWarn(String msg, Throwable tr) {
         if (level < WARN) {
             if (tr == null) {

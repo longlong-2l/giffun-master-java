@@ -1,6 +1,7 @@
 package com.study.longl.network.request;
 
 import com.study.longl.network.model.CallBack;
+import com.study.longl.network.util.Utility;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -30,8 +31,12 @@ public abstract class Request {
     private String deviceSerial;
 
     private void build() {
-        okHttpBuilder = new OkHttpClient.Builder();
+        okHttpBuilder = new OkHttpClient.Builder().addNetworkInterceptor(new LoggingInterceptor());
         okHttpClient = okHttpBuilder.build();
+        connectTimeout(10);
+        writeTimeout(10);
+        readTimeout(10);
+        deviceName = Utility.deviceName;
     }
 
     private void connectTimeout(int seconds) {
