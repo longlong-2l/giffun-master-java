@@ -46,8 +46,8 @@ public abstract class BaseFeedsFragment extends BaseFragment {
     public boolean isNoMoreData = false;
 
     protected void initViews(View rootView) {
-        recyclerView = rootView.findViewById(R.id.recyclerView);
-        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefresh);
+//        recyclerView = rootView.findViewById(R.id.recyclerView);
+//        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefresh);
     }
 
     @Override
@@ -55,7 +55,7 @@ public abstract class BaseFeedsFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         mainActivity = (MainActivity) getActivity();
         setupRecyclerView();
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+//        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 //        recyclerView.addOnScrollListener();
 //        swipeRefreshLayout.setOnRefreshListener();
         loadFeedsFromDB();
@@ -68,21 +68,21 @@ public abstract class BaseFeedsFragment extends BaseFragment {
     public void loadFinished() {
         super.loadFinished();
         isLoadFailed = false;
-        recyclerView.setVisibility(View.VISIBLE);
-        swipeRefreshLayout.setVisibility(View.VISIBLE);
-        if (swipeRefreshLayout.isRefreshing()) {
-            swipeRefreshLayout.setRefreshing(false);
-        }
+//        recyclerView.setVisibility(View.VISIBLE);
+//        swipeRefreshLayout.setVisibility(View.VISIBLE);
+//        if (swipeRefreshLayout.isRefreshing()) {
+//            swipeRefreshLayout.setRefreshing(false);
+//        }
     }
 
     @Override
     public void loadFailed(String msg) {
         super.loadFailed(msg);
         isLoadFailed = true;
-        swipeRefreshLayout.setRefreshing(false);
-        if (dataSeetSize() == 0) {
+//        swipeRefreshLayout.setRefreshing(false);
+        if (dataSetSize() == 0) {
             if (msg == null) {
-                swipeRefreshLayout.setVisibility(View.GONE);
+//                swipeRefreshLayout.setVisibility(View.GONE);
                 showBadNetworkView(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -93,7 +93,7 @@ public abstract class BaseFeedsFragment extends BaseFragment {
                 showLoadErrorView(msg);
             }
         } else {
-            adapter.notifyItemChanged(adapter.getItemCount() - 1);
+//            adapter.notifyItemChanged(adapter.getItemCount() - 1);
         }
     }
 
@@ -122,5 +122,5 @@ public abstract class BaseFeedsFragment extends BaseFragment {
 
     protected abstract void loadFeedsFromDB();
 
-    protected abstract int dataSeetSize();
+    protected abstract int dataSetSize();
 }

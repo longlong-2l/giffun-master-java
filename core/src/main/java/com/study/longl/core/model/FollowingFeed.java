@@ -1,5 +1,7 @@
 package com.study.longl.core.model;
 
+import android.os.Parcel;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,8 +15,12 @@ public class FollowingFeed extends SimpleListFeed {
     @SerializedName("ref_feed")
     public RefFeed refFeed = null;
 
+    protected FollowingFeed(Parcel in) {
+        super(in);
+    }
+
     @Override
-    BaseFeed refFeed() {
+    public BaseFeed refFeed() {
         return refFeed;
     }
 }

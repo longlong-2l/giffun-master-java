@@ -16,6 +16,7 @@ import org.litepal.annotation.Column;
 public class BaseFeed extends Model implements Parcelable, SearchItem {
 
     protected BaseFeed(Parcel in) {
+
     }
 
     public static final Creator<BaseFeed> CREATOR = new Creator<BaseFeed>() {

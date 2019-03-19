@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.study.longl.core.GifFun;
 import com.study.longl.main.R;
 import com.study.longl.main.common.ui.BaseActivity;
@@ -120,8 +121,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-//        TabLayout tabLayout = findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(viewPager);
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
         final NavigationView navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
@@ -152,7 +153,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             viewPager.setOffscreenPageLimit(2);
             viewPager.setCurrentItem(0);
         } catch (Exception e) {
-            Log.i("exception", "setupViewPager: " + e.getMessage());
+            Log.i("MyException", "setupViewPager: " + e.getMessage());
         }
     }
 

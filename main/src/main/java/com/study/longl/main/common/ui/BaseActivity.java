@@ -1,11 +1,16 @@
 package com.study.longl.main.common.ui;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -77,6 +82,11 @@ public class BaseActivity extends AppCompatActivity implements RequestLifecycle 
         weakReference = new WeakReference<Activity>(this);
         ActivityCollector.add(weakReference);
 //        EventBus.getDefault().register(this);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel("xiaomi","com", NotificationManager.IMPORTANCE_DEFAULT);
+        }
+
+
     }
 
     @Override
