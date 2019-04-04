@@ -13,11 +13,11 @@ public class FetchFollowingFeeds extends Response{
     @SerializedName("data")
     public ArrayList<FollowingFeed> feeds = new ArrayList<>();
 
-    public static void getResponse(CallBack callBack){
+    public static void getResponse(Callback callBack){
 
     }
 
-    public static void getResponse(long lastFeed,CallBack callBack){
+    public static void getResponse(long lastFeed, Callback callBack){
 
     }
 }

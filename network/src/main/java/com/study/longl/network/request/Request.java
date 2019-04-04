@@ -1,6 +1,6 @@
 package com.study.longl.network.request;
 
-import com.study.longl.network.model.CallBack;
+import com.study.longl.network.model.Callback;
 import com.study.longl.network.util.Utility;
 
 import java.util.Map;
@@ -20,7 +20,7 @@ public abstract class Request {
 
     private OkHttpClient.Builder okHttpBuilder;
 
-    private CallBack callBack;
+    private Callback callBack;
 
     private Map<String, String> params;
 
@@ -49,5 +49,14 @@ public abstract class Request {
 
     private void readTimeout(int seconds) {
         okHttpBuilder.readTimeout((long) seconds, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 设置响应回调接口
+     *
+     * @param callback 回调的实例
+     */
+    private void setListener(Callback callback) {
+        this.callBack = callback;
     }
 }
