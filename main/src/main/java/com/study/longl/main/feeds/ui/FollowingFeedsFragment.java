@@ -88,28 +88,28 @@ public class FollowingFeedsFragment extends BaseFeedsFragment implements LoadDat
     protected void loadFeeds(long lastFeed) {
         //TODO 网络访问
         final boolean isRefreshing = lastFeed <= 0;
-        FetchFollowingFeeds.getResponse(lastFeed, new OriginThreadCallback() {
-            @Override
-            public void onResponse(Response response) {
-                handleFetchedFeeds(response, isRefreshing);
-                isLoadingMore = false;
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.logWarn(TAG, e.getMessage(), e);
-                if (isRefreshing) {
-
-                }
-                mainActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadFailed(null);
-                        isLoadingMore = false;
-                    }
-                });
-            }
-        });
+//        FetchFollowingFeeds.getResponse(lastFeed, new OriginThreadCallback() {
+//            @Override
+//            public void onResponse(Response response) {
+//                handleFetchedFeeds(response, isRefreshing);
+//                isLoadingMore = false;
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//                Log.logWarn(TAG, e.getMessage(), e);
+//                if (isRefreshing) {
+//
+//                }
+//                mainActivity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        loadFailed(null);
+//                        isLoadingMore = false;
+//                    }
+//                });
+//            }
+//        });
     }
 
     @Override

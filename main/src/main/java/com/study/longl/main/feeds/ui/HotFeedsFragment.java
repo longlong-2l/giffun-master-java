@@ -45,16 +45,16 @@ public class HotFeedsFragment extends WaterFallFeedsFragment implements LoadData
     @Override
     protected void loadFeeds(long lastFeed) {
         boolean isRefreshing = lastFeed == 0L;       /* lastFeed等于0表示刷新 */
-        OriginThreadCallback originThreadCallback = new OriginThreadCallback() {
-            @Override
-            public void onResponse(Response response) {
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-
-            }
-        };
+//        OriginThreadCallback originThreadCallback = new OriginThreadCallback() {
+//            @Override
+//            public void onResponse(Response response) {
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//
+//            }
+//        };
     }
 
     @Override
